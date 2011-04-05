@@ -1,0 +1,7 @@
+*.pages
+*.dia
+tsoha/*~
+tsoha/.#*
+tsoha/.DS_Store
+tsoha/backups/* #[I keep some files relevant to the application like the database dump on the same folder]
+tsoha/log/* #[we don't need the the log files submitted
