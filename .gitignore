@@ -1,5 +1,7 @@
 *.pages
 *.dia
+*.dia~
+.DS_Store
 tsoha/*~
 tsoha/.#*
 tsoha/.DS_Store
