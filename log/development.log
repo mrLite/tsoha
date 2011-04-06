@@ -1,0 +1,216 @@
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2011-04-05 22:37:37 +0300
+
+Mysql2::Error (Unknown database 'tsoha_development'):
+  
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (24.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.7ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2011-04-05 22:38:04 +0300
+  Processing by Rails::InfoController#properties as HTML
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+Rendered inline template (0.5ms)
+Completed 200 OK in 41ms (Views: 1.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-05 23:12:05 +0300
+
+ActionController::RoutingError (No route matches "/projects"):
+  
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-05 23:14:30 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Mysql2::Error: Table 'tsoha_development.projects' doesn't exist: SELECT `projects`.* FROM `projects`
+Completed   in 98ms
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'tsoha_development.projects' doesn't exist: SELECT `projects`.* FROM `projects`):
+  app/controllers/projects_controller.rb:5:in `index'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.3ms)
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (82.6ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (8.0ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (34.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-05 23:23:44 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.4ms)[0m  SELECT `projects`.* FROM `projects`
+Mysql2::Error: Table 'tsoha_development.projects' doesn't exist: SELECT `projects`.* FROM `projects`
+Completed   in 6ms
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'tsoha_development.projects' doesn't exist: SELECT `projects`.* FROM `projects`):
+  app/controllers/projects_controller.rb:5:in `index'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.3ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2011-04-05 23:24:18 +0300
+  Processing by Rails::InfoController#properties as HTML
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+Rendered inline template (0.4ms)
+Completed 200 OK in 29ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2011-04-06 20:36:05 +0300
+  Processing by Rails::InfoController#properties as HTML
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Rendered inline template (0.5ms)
+Completed 200 OK in 72ms (Views: 1.5ms | ActiveRecord: 0.8ms)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateProjects (20110405201343)
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `url` varchar(255), `description` text, `visibility` varchar(255), `deadline` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110405201343')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `projects`
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-06 20:36:28 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 121ms (Views: 26.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-06 20:36:36 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (109.0ms)
+Rendered projects/new.html.erb within layouts/application (113.0ms)
+Completed 200 OK in 126ms (Views: 117.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2011-04-06 20:57:28 +0300
+  Processing by Rails::InfoController#properties as HTML
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+Rendered inline template (0.4ms)
+Completed 200 OK in 83ms (Views: 1.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2011-04-06 20:57:37 +0300
+  Processing by Rails::InfoController#properties as HTML
+Rendered inline template (0.5ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-06 22:21:36 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 15ms (Views: 6.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-06 22:36:03 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-06 22:36:07 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (8.7ms)
+Rendered projects/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 25ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-06 22:36:22 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (8.6ms)
+Rendered projects/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 24ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-06 22:36:31 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (8.0ms)
+Rendered projects/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 53ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2011-04-06 22:37:14 +0300
+  Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OyFi/l9djgH7CASRN6EEvMK5m71hW1xX3AnSHnleaqo=", "project"=>{"name"=>"Tietokantasovellus", "description"=>"Helsingin yliopiston tietojenkäsittelytieteen laitoksen aineopintojen kurssin Tietokantasovellus projekti."}, "commit"=>"Create Project"}
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  describe `projects`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `projects` (`name`, `url`, `description`, `visibility`, `deadline`, `created_at`, `updated_at`) VALUES ('Tietokantasovellus', NULL, 'Helsingin yliopiston tietojenkäsittelytieteen laitoksen aineopintojen kurssin Tietokantasovellus projekti.', NULL, NULL, '2011-04-06 19:37:14', '2011-04-06 19:37:14')[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+Redirected to http://0.0.0.0:3000/projects/1
+Completed 302 Found in 73ms
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-06 22:37:14 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (2.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 25ms (Views: 13.6ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-06 22:37:16 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 22ms (Views: 15.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-06 22:37:19 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 23ms (Views: 13.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-06 22:37:21 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 57ms (Views: 49.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-06 22:38:06 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 24ms (Views: 17.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-06 22:38:11 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 24ms (Views: 13.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-06 22:39:10 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 30ms (Views: 21.1ms | ActiveRecord: 0.5ms)
