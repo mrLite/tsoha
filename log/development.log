@@ -880,3 +880,10 @@ Started GET "/users" for 127.0.0.1 at 2011-04-07 23:20:03 +0300
   [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users`
 Rendered users/index.html.erb within layouts/application (11.6ms)
 Completed 200 OK in 57ms (Views: 15.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 23:57:09 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (44.9ms)
+Completed 200 OK in 57ms (Views: 49.1ms | ActiveRecord: 0.3ms)
