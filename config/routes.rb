@@ -1,4 +1,6 @@
 Tsoha::Application.routes.draw do
+  resources :users
+
   resources :projects
 
   # The priority is based upon order of creation:

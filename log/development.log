@@ -214,3 +214,508 @@ Started GET "/projects" for 127.0.0.1 at 2011-04-06 22:39:10 +0300
   [1m[36mProject Load (0.5ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
 Rendered projects/index.html.erb within layouts/application (16.6ms)
 Completed 200 OK in 30ms (Views: 21.1ms | ActiveRecord: 0.5ms)
+  [1m[36mSQL (18.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  DROP DATABASE IF EXISTS `tsoha_test`
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE DATABASE `tsoha_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `url` varchar(255), `description` text, `visibility` varchar(255), `deadline` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (5.4ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110405201343')
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:16:52 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 90ms (Views: 17.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 21:16:57 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (10.9ms)
+Rendered projects/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 27ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (3.3ms)[0m  DROP DATABASE IF EXISTS `tsoha_test`
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE DATABASE `tsoha_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `url` varchar(255), `description` text, `visibility` varchar(255), `deadline` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (4.9ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110405201343')
+
+
+Started POST "/projects" for 127.0.0.1 at 2011-04-07 21:18:06 +0300
+  Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OyFi/l9djgH7CASRN6EEvMK5m71hW1xX3AnSHnleaqo=", "project"=>{"name"=>"Hämäläiset pidot", "description"=>"Hämäläisten pitojen to-do-lista."}, "commit"=>"Create Project"}
+  [1m[35mSQL (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.3ms)[0m  describe `projects`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `projects` (`name`, `url`, `description`, `visibility`, `deadline`, `created_at`, `updated_at`) VALUES ('Hämäläiset pidot', NULL, 'Hämäläisten pitojen to-do-lista.', NULL, NULL, '2011-04-07 18:18:06', '2011-04-07 18:18:06')[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+Redirected to http://0.0.0.0:3000/projects/2
+Completed 302 Found in 37ms
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2011-04-07 21:18:06 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 23ms (Views: 14.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:18:09 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 23ms (Views: 15.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:18:57 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 53ms (Views: 16.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:20:06 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 24ms (Views: 16.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:21:24 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 53ms (Views: 45.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-07 21:21:30 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 23ms (Views: 13.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:22:42 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 52ms (Views: 45.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-07 21:22:45 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 24ms (Views: 13.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2011-04-07 21:22:49 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 23ms (Views: 13.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 21:23:25 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (7.9ms)
+Rendered projects/new.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 24ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2011-04-07 21:23:26 +0300
+  Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OyFi/l9djgH7CASRN6EEvMK5m71hW1xX3AnSHnleaqo=", "project"=>{"name"=>"", "description"=>""}, "commit"=>"Create Project"}
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+Rendered projects/_form.html.erb (3.7ms)
+Rendered projects/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 27ms (Views: 11.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:23:43 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 24ms (Views: 16.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:23:56 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 28ms (Views: 20.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:24:10 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 23ms (Views: 16.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 21:28:15 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (8.9ms)
+Rendered projects/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 32ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 21:30:00 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (82.1ms)
+Rendered projects/new.html.erb within layouts/application (85.8ms)
+Completed 200 OK in 98ms (Views: 89.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:30:13 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 26ms (Views: 18.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/1/edit" for 127.0.0.1 at 2011-04-07 21:30:15 +0300
+  Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (3.9ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+Rendered projects/_form.html.erb (21.6ms)
+Rendered projects/edit.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 47ms (Views: 31.5ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/projects/1" for 127.0.0.1 at 2011-04-07 21:30:22 +0300
+  Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OyFi/l9djgH7CASRN6EEvMK5m71hW1xX3AnSHnleaqo=", "project"=>{"name"=>"Tietokantasovellus", "description"=>"Helsingin yliopiston tietojenkäsittelytieteen laitoksen aineopintojen kurssin Tietokantasovellus projekti.", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"10", "deadline(3i)"=>"7"}, "commit"=>"Update Project", "id"=>"1"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `projects` SET `description` = 'Helsingin yliopiston tietojenkäsittelytieteen laitoksen aineopintojen kurssin Tietokantasovellus projekti.', `url` = '', `deadline` = '2011-10-07 00:00:00', `updated_at` = '2011-04-07 18:30:22' WHERE `projects`.`id` = 1[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+Redirected to http://0.0.0.0:3000/projects/1
+Completed 302 Found in 22ms
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-07 21:30:22 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (39.3ms)
+Completed 200 OK in 53ms (Views: 43.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:30:29 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 24ms (Views: 16.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/2/edit" for 127.0.0.1 at 2011-04-07 21:30:33 +0300
+  Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1[0m
+Rendered projects/_form.html.erb (13.8ms)
+Rendered projects/edit.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 32ms (Views: 22.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/projects/2" for 127.0.0.1 at 2011-04-07 21:30:39 +0300
+  Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OyFi/l9djgH7CASRN6EEvMK5m71hW1xX3AnSHnleaqo=", "project"=>{"name"=>"Hämäläiset pidot", "description"=>"Hämäläisten pitojen to-do-lista.", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"2", "deadline(3i)"=>"7"}, "commit"=>"Update Project", "id"=>"2"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `projects` SET `name` = 'Hämäläiset pidot', `description` = 'Hämäläisten pitojen to-do-lista.', `url` = '', `deadline` = '2011-02-07 00:00:00', `updated_at` = '2011-04-07 18:30:39' WHERE `projects`.`id` = 2
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/projects/2
+Completed 302 Found in 21ms
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2011-04-07 21:30:39 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 22ms (Views: 13.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 21:30:40 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 52ms (Views: 16.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:47:44 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (10.8ms)
+Rendered projects/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 45ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:48:07 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (10.9ms)
+Rendered projects/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 27ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:49:06 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (80.2ms)
+Rendered projects/new.html.erb within layouts/application (81.8ms)
+Completed   in 98ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 2)):
+    29:   </div>
+    30:   <div class="field">
+    31:   	<%= f.label :visibility %><br />
+    32: 	<%= f.radio_button "Public" %>
+    33: 	<%= f.radio_button "Private" %>
+    34:   </div>
+    35:   <div class="actions">
+  app/views/projects/_form.html.erb:32:in `block in _app_views_projects__form_html_erb__1372465268371910037_2155118720__1504733539286597834'
+  app/views/projects/_form.html.erb:1:in `_app_views_projects__form_html_erb__1372465268371910037_2155118720__1504733539286597834'
+  app/views/projects/new.html.erb:3:in `_app_views_projects_new_html_erb__437511173370981329_2155139980_1964430704875184494'
+  app/controllers/projects_controller.rb:29:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.9ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.2ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:49:33 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (10.9ms)
+Rendered projects/new.html.erb within layouts/application (12.4ms)
+Completed   in 25ms
+
+ActionView::Template::Error (undefined method `visibilit' for #<Project:0x000001014b0210>):
+    30:   <div class="field">
+    31:   	<%= f.label :visibility %><br />
+    32: 	<%= f.radio_button :visibility, :Public %>
+    33: 	<%= f.radio_button :visibilit, :Private %>
+    34:   </div>
+    35:   <div class="actions">
+    36:     <%= f.submit %>
+  app/views/projects/_form.html.erb:33:in `block in _app_views_projects__form_html_erb__1372465268371910037_2158283420__1504733539286597834'
+  app/views/projects/_form.html.erb:1:in `_app_views_projects__form_html_erb__1372465268371910037_2158283420__1504733539286597834'
+  app/views/projects/new.html.erb:3:in `_app_views_projects_new_html_erb__437511173370981329_2158297640_1964430704875184494'
+  app/controllers/projects_controller.rb:29:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.8ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:49:34 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (39.8ms)
+Rendered projects/new.html.erb within layouts/application (41.4ms)
+Completed   in 56ms
+
+ActionView::Template::Error (undefined method `visibilit' for #<Project:0x00000100b596a8>):
+    30:   <div class="field">
+    31:   	<%= f.label :visibility %><br />
+    32: 	<%= f.radio_button :visibility, :Public %>
+    33: 	<%= f.radio_button :visibilit, :Private %>
+    34:   </div>
+    35:   <div class="actions">
+    36:     <%= f.submit %>
+  app/views/projects/_form.html.erb:33:in `block in _app_views_projects__form_html_erb__1372465268371910037_2153258260__1504733539286597834'
+  app/views/projects/_form.html.erb:1:in `_app_views_projects__form_html_erb__1372465268371910037_2153258260__1504733539286597834'
+  app/views/projects/new.html.erb:3:in `_app_views_projects_new_html_erb__437511173370981329_2153327960_1964430704875184494'
+  app/controllers/projects_controller.rb:29:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.8ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.9ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:49:47 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (11.2ms)
+Rendered projects/new.html.erb within layouts/application (12.7ms)
+Completed   in 25ms
+
+ActionView::Template::Error (undefined method `visibilit' for #<Project:0x000001012c49d8>):
+    30:   <div class="field">
+    31:   	<%= f.label :visibility %><br />
+    32: 	<%= f.radio_button :visibility, "Public" %>
+    33: 	<%= f.radio_button :visibilit, "Private" %>
+    34:   </div>
+    35:   <div class="actions">
+    36:     <%= f.submit %>
+  app/views/projects/_form.html.erb:33:in `block in _app_views_projects__form_html_erb__1372465268371910037_2155924660__1504733539286597834'
+  app/views/projects/_form.html.erb:1:in `_app_views_projects__form_html_erb__1372465268371910037_2155924660__1504733539286597834'
+  app/views/projects/new.html.erb:3:in `_app_views_projects_new_html_erb__437511173370981329_2156281260_1964430704875184494'
+  app/controllers/projects_controller.rb:29:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.8ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.8ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:49:52 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (10.7ms)
+Rendered projects/new.html.erb within layouts/application (12.2ms)
+Completed   in 104ms
+
+ActionView::Template::Error (undefined method `visibilit' for #<Project:0x00000100957800>):
+    30:   <div class="field">
+    31:   	<%= f.label :visibility %><br />
+    32: 	<%= f.radio_button :visibility, "Public" %>
+    33: 	<%= f.radio_button :visibilit, "Private" %>
+    34:   </div>
+    35:   <div class="actions">
+    36:     <%= f.submit %>
+  app/views/projects/_form.html.erb:33:in `block in _app_views_projects__form_html_erb__1372465268371910037_2155671760__1504733539286597834'
+  app/views/projects/_form.html.erb:1:in `_app_views_projects__form_html_erb__1372465268371910037_2155671760__1504733539286597834'
+  app/views/projects/new.html.erb:3:in `_app_views_projects_new_html_erb__437511173370981329_2151801020_1964430704875184494'
+  app/controllers/projects_controller.rb:29:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.7ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:49:58 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (11.3ms)
+Rendered projects/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 27ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:50:43 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (11.2ms)
+Rendered projects/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 57ms (Views: 18.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:51:05 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (11.2ms)
+Rendered projects/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 27ms (Views: 18.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/1/edit" for 127.0.0.1 at 2011-04-07 22:51:34 +0300
+  Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+Rendered projects/_form.html.erb (14.0ms)
+Rendered projects/edit.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 31ms (Views: 21.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/projects/1" for 127.0.0.1 at 2011-04-07 22:51:37 +0300
+  Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OyFi/l9djgH7CASRN6EEvMK5m71hW1xX3AnSHnleaqo=", "project"=>{"name"=>"Tietokantasovellus", "description"=>"Helsingin yliopiston tietojenkäsittelytieteen laitoksen aineopintojen kurssin Tietokantasovellus projekti.", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"10", "deadline(3i)"=>"7", "visibility"=>"Public"}, "commit"=>"Update Project", "id"=>"1"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `projects` SET `description` = 'Helsingin yliopiston tietojenkäsittelytieteen laitoksen aineopintojen kurssin Tietokantasovellus projekti.', `visibility` = 'Public', `updated_at` = '2011-04-07 19:51:37' WHERE `projects`.`id` = 1[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+Redirected to http://0.0.0.0:3000/projects/1
+Completed 302 Found in 23ms
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-07 22:51:37 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 26ms (Views: 15.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 22:51:39 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects`
+Rendered projects/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 41ms (Views: 33.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/2/edit" for 127.0.0.1 at 2011-04-07 22:51:59 +0300
+  Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1[0m
+Rendered projects/_form.html.erb (14.3ms)
+Rendered projects/edit.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 32ms (Views: 22.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/projects/2" for 127.0.0.1 at 2011-04-07 22:52:01 +0300
+  Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OyFi/l9djgH7CASRN6EEvMK5m71hW1xX3AnSHnleaqo=", "project"=>{"name"=>"Hämäläiset pidot", "description"=>"Hämäläisten pitojen to-do-lista.", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"2", "deadline(3i)"=>"7", "visibility"=>"Private"}, "commit"=>"Update Project", "id"=>"2"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `projects` SET `name` = 'Hämäläiset pidot', `description` = 'Hämäläisten pitojen to-do-lista.', `visibility` = 'Private', `updated_at` = '2011-04-07 19:52:01' WHERE `projects`.`id` = 2
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/projects/2
+Completed 302 Found in 22ms
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2011-04-07 22:52:01 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 2 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 22ms (Views: 12.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-07 22:52:03 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects`[0m
+Rendered projects/index.html.erb within layouts/application (42.2ms)
+Completed 200 OK in 54ms (Views: 46.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/projects/1/edit" for 127.0.0.1 at 2011-04-07 22:54:15 +0300
+  Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+Rendered projects/_form.html.erb (14.5ms)
+Rendered projects/edit.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 63ms (Views: 22.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-07 22:54:32 +0300
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (40.4ms)
+Rendered projects/new.html.erb within layouts/application (44.4ms)
+Completed 200 OK in 58ms (Views: 48.4ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateProjects (20110405201343)
+Migrating to CreateUsers (20110407200158)
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `username` varchar(255), `email` varchar(255), `password_salt` varchar(255), `encrypted_password` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110407200158')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.8ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `projects`
+  [1m[36mSQL (1.8ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `users`
