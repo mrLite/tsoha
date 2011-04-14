@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414152743) do
+ActiveRecord::Schema.define(:version => 20110414225049) do
 
   create_table "member_roles", :force => true do |t|
     t.string   "role"
@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20110414152743) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "user_roles", :force => true do |t|
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
@@ -54,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20110414152743) do
     t.string   "encrypted_password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_role_id"
   end
 
 end
