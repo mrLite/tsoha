@@ -4,5 +4,21 @@
 
 <p><%= @project.description %></p>
 
+<h2>Project members</h2>
+<table>
+	<th>Username</th>
+	<th>Role</th>
+	<th>E-mail</th>
+	<th>Title</th>
+<% @members.each do |member| %>
+<tr>
+	<td><%= member.user.username %></td>
+	<td><%= member.member_role.role %></td>
+	<td><%= member.user.email %></td>
+	<td><%= member.title %></td>
+</tr>
+<% end %>
+</table>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

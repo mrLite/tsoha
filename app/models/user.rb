@@ -1,6 +1,9 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
+  has_many :members
+  has_many :projects, :through => :members
+  
   validates :username, :presence => true, :uniqueness => true
   validates :password, :confirmation => true
   
