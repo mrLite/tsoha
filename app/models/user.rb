@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :members
   has_many :projects, :through => :members
   
+  belongs_to :user_role
+  
   validates :username, :presence => true, :uniqueness => true
   validates :password, :confirmation => true
   

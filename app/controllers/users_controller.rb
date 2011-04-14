@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorize, :only => [:update, :destroy]
+  before_filter :authorize, :only => [:edit, :update, :destroy]
   
   # GET /users
   # GET /users.xml
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+    @user.user_role = UserRole.find_or_create_by_role("user")
 
     respond_to do |format|
       if @user.save
