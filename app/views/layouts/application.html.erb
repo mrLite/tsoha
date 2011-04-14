@@ -7,6 +7,13 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+	
+<% if session[:user_id] %>
+	<p>You're logged in as <%= User.find_by_id(session[:user_id]).username %></p>
+	<p><%= link_to 'Log out', logout_path %></p>
+<% else %>
+	<%= link_to 'Log in', login_path %>
+<% end %>
 
 <%= yield %>
 

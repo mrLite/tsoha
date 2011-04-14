@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url
     else
-      redirect_to login_url, :alert => "Invalid user/password combination"
+      redirect_to login_url, :notice => "Invalid user/password combination"
     end
   end
 

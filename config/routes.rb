@@ -1,10 +1,11 @@
 Tsoha::Application.routes.draw do
   
   controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
+    get '/login' => :new
+    post '/login' => :create
   end
+  
+  match 'logout' => 'sessions#destroy', :as => :logout
 
   root :to => "projects#index"
   
