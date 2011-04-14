@@ -44,9 +44,11 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
+    user = User.find_by_id(session[:user_id])
 
     respond_to do |format|
       if @project.save
+        @project.members.create(:user_id => user.id, :member_role_id => MemberRole.find_or_create_by_role("creator"))
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else

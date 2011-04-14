@@ -3687,3 +3687,210 @@ Started GET "/" for 127.0.0.1 at 2011-04-14 18:58:50 +0300
   [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public'[0m
 Rendered projects/index.html.erb within layouts/application (44.1ms)
 Completed 200 OK in 62ms (Views: 48.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-04-14 19:01:29 +0300
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2011-04-14 19:01:32 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "username"=>"aku", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'aku' LIMIT 1
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 23ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-14 19:01:32 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public'[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (38.8ms)
+Completed 200 OK in 57ms (Views: 42.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-14 19:01:36 +0300
+  Processing by ProjectsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered projects/_form.html.erb (96.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/new.html.erb within layouts/application (106.7ms)
+Completed 200 OK in 181ms (Views: 111.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2011-04-14 19:01:47 +0300
+  Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "project"=>{"name"=>"Testi", "description"=>"blaa blaa", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"6", "deadline(3i)"=>"14", "visibility"=>"Public"}, "commit"=>"Create Project"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.3ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `projects` (`name`, `url`, `description`, `visibility`, `deadline`, `created_at`, `updated_at`) VALUES ('Testi', '', 'blaa blaa', 'Public', '2011-06-14 00:00:00', '2011-04-14 16:01:47', '2011-04-14 16:01:47')
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/projects/3
+Completed 302 Found in 78ms
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2011-04-14 19:01:47 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mProject Load (1.1ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 3 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 3)[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (30.8ms)
+Completed 200 OK in 74ms (Views: 35.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-14 19:02:09 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public'[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (45.2ms)
+Completed 200 OK in 233ms (Views: 49.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-14 19:02:13 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mMember Load (1.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 1)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (55.9ms)
+Completed 200 OK in 95ms (Views: 58.3ms | ActiveRecord: 75.2ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2011-04-14 19:02:16 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 3 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 3)[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 68ms (Views: 34.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-14 19:13:25 +0300
+  Processing by ProjectsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered projects/_form.html.erb (6.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/new.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 65ms (Views: 21.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2011-04-14 19:13:34 +0300
+  Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "project"=>{"name"=>"Testi", "description"=>"blaa", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"4", "deadline(3i)"=>"14", "visibility"=>"Public"}, "commit"=>"Create Project"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mMemberRole Load (0.3ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'creator' LIMIT 1[0m
+Completed   in 69ms
+
+ActiveRecord::RecordNotSaved (You cannot call create unless the parent is saved):
+  app/controllers/projects_controller.rb:48:in `create'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (34.8ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2011-04-14 19:13:51 +0300
+  Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "project"=>{"name"=>"Testi", "description"=>"blaa", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"4", "deadline(3i)"=>"14", "visibility"=>"Public"}, "commit"=>"Create Project"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO `projects` (`name`, `url`, `description`, `visibility`, `deadline`, `created_at`, `updated_at`) VALUES ('Testi', '', 'blaa', 'Public', '2011-04-14 00:00:00', '2011-04-14 16:13:51', '2011-04-14 16:13:51')
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mMemberRole Load (0.5ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'creator' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  describe `members`
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO `members` (`project_id`, `user_id`, `member_role_id`, `title`, `created_at`, `updated_at`) VALUES (4, 3, 1, NULL, '2011-04-14 16:13:51', '2011-04-14 16:13:51')[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+Redirected to http://0.0.0.0:3000/projects/4
+Completed 302 Found in 107ms
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2011-04-14 19:13:51 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 4 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 4)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.3ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (55.2ms)
+Completed 200 OK in 123ms (Views: 58.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-14 19:14:05 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public'
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered projects/index.html.erb within layouts/application (42.5ms)
+Completed 200 OK in 61ms (Views: 46.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2011-04-14 19:14:08 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 3 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 3)[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 98ms (Views: 34.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-14 19:14:10 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public'[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (75.6ms)
+Completed 200 OK in 95ms (Views: 79.8ms | ActiveRecord: 40.5ms)
+
+
+Started POST "/projects/3" for 127.0.0.1 at 2011-04-14 19:14:13 +0300
+  Processing by ProjectsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "id"=>"3"}
+  [1m[36mProject Load (2.8ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 3 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.8ms)[0m  [1mDELETE FROM `projects` WHERE `projects`.`id` = 3[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+Redirected to http://0.0.0.0:3000/projects
+Completed 302 Found in 36ms
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-14 19:14:13 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public'[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 60ms (Views: 46.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-14 19:14:14 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 1)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 124ms (Views: 58.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2011-04-14 19:14:29 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.4ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'public' AND `projects`.`id` = 4 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 4)[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mMemberRole Load (0.3ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 94ms (Views: 59.6ms | ActiveRecord: 8.7ms)
