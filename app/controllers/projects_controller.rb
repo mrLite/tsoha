@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
-  before_filter :authorize, :only => [:new, :create]
+  before_filter :authorize, :only => [:new, :create, :update, :destroy]
   
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.all
+    @projects = Project.all(:conditions => {:visibility => "Public"})
 
     respond_to do |format|
       format.html # index.html.erb

@@ -7,17 +7,27 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	
-<% if session[:user_id] %>
-	<p>You're logged in as <%= User.find_by_id(session[:user_id]).username %></p>
-	<p><%= link_to 'Log out', logout_path %></p>
-<% else %>
-	<p><%= link_to 'Log in', login_path %> or <%= link_to 'create a new user account', new_user_path %></p>
-<% end %>
 
-<p id="notice"><%= notice %></p>
+<section id="page">
+	<header id="header">
+		<nav>
+			<%= link_to 'Projects', projects_path %>
+			<%= link_to 'Users', users_path %>
+		</nav>
+		<div id="login">
+			<% if session[:user_id] %>
+				<p>You're logged in as <%= User.find_by_id(session[:user_id]).username %> <%= link_to 'Log out', logout_path %></p>
+			<% else %>
+				<p><%= link_to 'Log in', login_path %> or <%= link_to 'create a new user account', new_user_path %></p>
+			<% end %>
+		</div>
+	</header>
 
-<%= yield %>
+	<section id="content">
+		<p id="notice"><%= notice %></p>
+		<%= yield %>
+	</section>
+</section>
 
 </body>
 </html>
