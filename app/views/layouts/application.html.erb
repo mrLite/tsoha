@@ -12,8 +12,10 @@
 	<p>You're logged in as <%= User.find_by_id(session[:user_id]).username %></p>
 	<p><%= link_to 'Log out', logout_path %></p>
 <% else %>
-	<%= link_to 'Log in', login_path %>
+	<p><%= link_to 'Log in', login_path %> or <%= link_to 'create a new user account', new_user_path %></p>
 <% end %>
+
+<p id="notice"><%= notice %></p>
 
 <%= yield %>
 
