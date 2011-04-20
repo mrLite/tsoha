@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  description: MyText
+  priority: 1
+  status: MyString
+  deadline: 2011-04-20 18:12:58
+  comment: MyString
+
+two:
+  project_id: 1
+  description: MyText
+  priority: 1
+  status: MyString
+  deadline: 2011-04-20 18:12:58
+  comment: MyString

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :authorize, :only => [:new, :create, :update, :destroy]
+  before_filter :authorize, :only => [:new, :create, :edit, :update, :destroy]
   
   # GET /projects
   # GET /projects.xml
