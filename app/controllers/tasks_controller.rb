@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_filter :authorize, :except => :show
+  
   # GET /tasks/1
   # GET /tasks/1.xml
   def show
@@ -25,7 +27,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   # POST /tasks
@@ -48,11 +51,12 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.xml
   def update
-    @task = Task.find(params[:id])
-
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
+    
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(@project, :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -64,11 +68,12 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
   def destroy
-    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tasks_url) }
+      format.html { redirect_to(@project) }
       format.xml  { head :ok }
     end
   end

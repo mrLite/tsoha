@@ -12,7 +12,9 @@ Tsoha::Application.routes.draw do
   resources :users
 
   resources :projects do
+    match 'add_member' => 'members#add', :as => :add_member
     resources :tasks
+    resources :members
   end
 
   # The priority is based upon order of creation:

@@ -1,0 +1,17 @@
+<h2>Choose a user to add to project <%= @project.name %></h2>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+	<td><%= link_to 'add', {:controller => "members", :action => "new", :project_id => @project.id, :user_id => user.id} %></td>
+  </tr>
+<% end %>
+</table>

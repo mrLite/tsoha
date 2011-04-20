@@ -1,0 +1,16 @@
+<h2>Project members</h2>
+<table>
+	<th>Username</th>
+	<th>Role</th>
+	<th>E-mail</th>
+	<th>Title</th>
+<% @members.each do |member| %>
+<tr>
+	<td><%= member.user.username %></td>
+	<td><%= member.member_role.role %></td>
+	<td><%= member.user.email %></td>
+	<td><%= member.title %></td>
+</tr>
+<% end %>
+</table>
+<%= link_to 'Add a new member', project_add_member_path %>

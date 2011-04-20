@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :priority %><br />
-    <%= f.text_field :priority %>
+    <%= f.select(:priority, 1.upto(5).to_a) %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= f.select(:status, ["pending", "completed"]) %>
   </div>
   <div class="field">
     <%= f.label :deadline %><br />

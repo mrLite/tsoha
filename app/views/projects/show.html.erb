@@ -17,6 +17,7 @@
 </tr>
 <% end %>
 </table>
+<%= link_to 'Show all members', project_members_path(@project) %>
 
 <h2>Tasks</h2>
 <table>
@@ -25,6 +26,7 @@
 	<th>Priority</th>
 	<th>Status</th>
 	<th>Deadline</th>
+	<th></th>
 <% @tasks.each do |task| %>
 <tr>
 	<td><%= task.name %></td>
@@ -32,10 +34,11 @@
 	<td><%= task.priority %></td>
 	<td><%= task.status %></td>
 	<td><%= task.deadline %></td>
+	<td><%= link_to 'Show task', project_task_path(@project, task) %></td>
 </tr>
 <% end %>
 </table>
-<%= link_to 'New Task', new_project_task_path(@project) %><br />
+<%= link_to 'New Task', new_project_task_path(@project, @task) %><br />
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
