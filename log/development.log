@@ -5269,3 +5269,1071 @@ Migrating to CreateTasks (20110420151258)
   [1m[35mSQL (0.8ms)[0m  SHOW KEYS FROM `user_roles`
   [1m[36mSQL (1.6ms)[0m  [1mdescribe `users`[0m
   [1m[35mSQL (0.7ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateProjects (20110405201343)
+Migrating to CreateUsers (20110407200158)
+Migrating to CreateMembers (20110414144056)
+Migrating to CreateMemberRoles (20110414144126)
+Migrating to AddSessionsTable (20110414152743)
+Migrating to CreateUserRoles (20110414224949)
+Migrating to AddUserRoleIdToUsers (20110414225049)
+Migrating to CreateTasks (20110420151258)
+Migrating to AddTaskAName (20110420152101)
+  [1m[35mSQL (93.5ms)[0m  ALTER TABLE `tasks` ADD `name` varchar(255)
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110420152101')[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `member_roles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `member_roles`
+  [1m[36mSQL (1.8ms)[0m  [1mdescribe `members`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `members`
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `projects`[0m
+  [1m[35mSQL (1.1ms)[0m  SHOW KEYS FROM `projects`
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `sessions`[0m
+  [1m[35mSQL (1.6ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (1.9ms)[0m  [1mdescribe `tasks`[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW KEYS FROM `tasks`
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `user_roles`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `user_roles`
+  [1m[36mSQL (2.3ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.9ms)[0m  SHOW KEYS FROM `users`
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-20 18:22:51 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (1.0ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'Public'[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 107ms (Views: 89.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2011-04-20 18:22:57 +0300
+  Processing by ProjectsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/_form.html.erb (17.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/new.html.erb within layouts/application (52.2ms)
+Completed 200 OK in 124ms (Views: 90.8ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2011-04-20 18:23:31 +0300
+  Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "project"=>{"name"=>"Kesäloma", "description"=>"Lomaillaan, opiskellaan, ehkä tehdään duunia.", "url"=>"", "deadline(1i)"=>"2011", "deadline(2i)"=>"8", "deadline(3i)"=>"31", "visibility"=>"Public"}, "commit"=>"Create Project"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  describe `projects`
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO `projects` (`name`, `url`, `description`, `visibility`, `deadline`, `created_at`, `updated_at`) VALUES ('Kesäloma', '', 'Lomaillaan, opiskellaan, ehkä tehdään duunia.', 'Public', '2011-08-31 00:00:00', '2011-04-20 15:23:31', '2011-04-20 15:23:31')[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+  [1m[36mMemberRole Load (0.2ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'creator' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `members`[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO `members` (`project_id`, `user_id`, `member_role_id`, `title`, `created_at`, `updated_at`) VALUES (5, 1, 1, NULL, '2011-04-20 15:23:31', '2011-04-20 15:23:31')
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/projects/5
+Completed 302 Found in 152ms
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:23:31 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (91.1ms)
+Completed 200 OK in 143ms (Views: 94.2ms | ActiveRecord: 31.9ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:26:18 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (101.8ms)
+Completed   in 150ms
+
+ActionView::Template::Error (undefined local variable or method `new_task_path' for #<#<Class:0x00000100dda0f8>:0x00000100dd7920>):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_task_path %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb__186271986642277019_2154736800_3763776767100304099'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.3ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:26:25 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (1.2ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (54.6ms)
+Completed   in 135ms
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"tasks"}):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_project_task_path %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb__186271986642277019_2172875660_3763776767100304099'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:26:43 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.2ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (105.9ms)
+Completed   in 231ms
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"tasks"}):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_project_task_path %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb___1006255053381083348_2173934120_2014820658782396182'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.4ms)
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` LIMIT 1[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 1)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:28:40 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.5ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (93.7ms)
+Completed   in 142ms
+
+ActionView::Template::Error (undefined local variable or method `new_task_path' for #<#<Class:0x00000101385f48>:0x000001013818f8>):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_task_path %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb___1006255053381083348_2157704820_2014820658782396182'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.5ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:30:22 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.7ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (94.7ms)
+Completed   in 142ms
+
+ActionView::Template::Error (undefined local variable or method `new_task_path' for #<#<Class:0x00000100d05ab0>:0x00000100cfdc70>):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_task_path %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb___1006255053381083348_2154286120_2014820658782396182'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.3ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:30:33 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.7ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (53.7ms)
+Completed   in 132ms
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"tasks"}):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_project_task_path %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb___1006255053381083348_2173690260_2014820658782396182'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.9ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:32:48 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.5ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.6ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (96.3ms)
+Completed   in 147ms
+
+ActionView::Template::Error (undefined local variable or method `new_task_path' for #<#<Class:0x0000010127b698>:0x0000010126e3a8>):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_task_path %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb___1006255053381083348_2157140180_2014820658782396182'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.7ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:37:27 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (96.3ms)
+Completed   in 146ms
+
+ActionView::Template::Error (undefined method `new_task_path' for #<#<Class:0x00000100cce560>:0x00000100cc73f0>):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_task_path(@project) %>
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb___1006255053381083348_2154164100_2014820658782396182'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.7ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:37:45 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (1.8ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.6ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (57.9ms)
+Completed 200 OK in 141ms (Views: 60.6ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:37:56 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.6ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (57.1ms)
+Completed 200 OK in 129ms (Views: 60.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:37:58 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (10.1ms)
+Rendered tasks/new.html.erb within layouts/application (11.8ms)
+Completed   in 55ms
+
+ActionView::Template::Error (undefined method `tasks_path' for #<#<Class:0x00000100fbb3b8>:0x00000100fb75d8>):
+    1: <%= form_for(@task) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2155697000__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155718620_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.5ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:38:35 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (10.3ms)
+Rendered tasks/new.html.erb within layouts/application (11.8ms)
+Completed   in 56ms
+
+ActionView::Template::Error (undefined method `tasks_path' for #<#<Class:0x0000010137afa8>:0x00000101377ee8>):
+    1: <%= form_for(@task) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2157158160__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2157287840_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.8ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:38:38 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (11.5ms)
+Rendered tasks/new.html.erb within layouts/application (13.2ms)
+Completed   in 86ms
+
+ActionView::Template::Error (undefined method `tasks_path' for #<#<Class:0x000001030bf4d8>:0x000001030ba1b8>):
+    1: <%= form_for(@task) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2173005060__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2173024700_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.7ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:38:39 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (12.2ms)
+Rendered tasks/new.html.erb within layouts/application (13.9ms)
+Completed   in 88ms
+
+ActionView::Template::Error (undefined method `tasks_path' for #<#<Class:0x0000010323a920>:0x000001032376f8>):
+    1: <%= form_for(@task) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2173793540__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2173807600_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.7ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:39:08 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (104.0ms)
+Rendered tasks/new.html.erb within layouts/application (105.5ms)
+Completed   in 148ms
+
+ActionView::Template::Error (undefined method `priority' for #<Project:0x00000100eb2f70>):
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :priority %><br />
+    24:     <%= f.text_field :priority %>
+    25:   </div>
+    26:   <div class="field">
+    27:     <%= f.label :status %><br />
+  app/views/tasks/_form.html.erb:24:in `block in _app_views_tasks__form_html_erb___3132037419246858402_2152892780__3931320352106795202'
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2152892780__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2153071620_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.7ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.4ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:39:21 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.9ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (4.1ms)
+Rendered tasks/new.html.erb within layouts/application (5.6ms)
+Completed   in 49ms
+
+ActionView::Template::Error (undefined method `priority' for #<Project:0x00000100fc1df8>):
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :priority %><br />
+    24:     <%= f.text_field :priority %>
+    25:   </div>
+    26:   <div class="field">
+    27:     <%= f.label :status %><br />
+  app/views/tasks/_form.html.erb:24:in `block in _app_views_tasks__form_html_erb___3132037419246858402_2154994080__3931320352106795202'
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2154994080__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155012060_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (39.4ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:39:36 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (11.5ms)
+Rendered tasks/new.html.erb within layouts/application (13.1ms)
+Completed   in 57ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000100f75f20>:0x00000100f70d18>):
+    1: <%= form_for [@project, Task.new] do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2155535520__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155567620_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.5ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:40:08 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (12.6ms)
+Rendered tasks/new.html.erb within layouts/application (14.2ms)
+Completed   in 56ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x000001011c31d8>:0x000001011bcef0>):
+    1: <%= form_for [@project, @task] do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2156734760__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2156769760_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.4ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:40:13 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.4ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (85.8ms)
+Completed 200 OK in 163ms (Views: 88.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:40:58 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (10.9ms)
+Rendered tasks/new.html.erb within layouts/application (12.4ms)
+Completed   in 55ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000100ecc1a0>:0x00000100ec87f8>):
+    1: <%= form_for [@project, @task] do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2155202460__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155225880_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (33.8ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (39.7ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:41:52 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (10.6ms)
+Rendered tasks/new.html.erb within layouts/application (12.1ms)
+Completed   in 58ms
+
+ActionView::Template::Error (undefined method `tasks_path' for #<#<Class:0x00000100fb1818>:0x00000100fadd80>):
+    1: <%= form_for(@task) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2155681560__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155699700_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:42:54 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (12.7ms)
+Rendered tasks/new.html.erb within layouts/application (14.5ms)
+Completed   in 58ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000101266018>:0x0000010125ae48>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2157026340__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2157093580_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:43:20 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (7.0ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (10.6ms)
+Rendered tasks/new.html.erb within layouts/application (12.1ms)
+Completed   in 109ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000103086778>:0x0000010307e9d8>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2172879740__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2172893420_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:43:29 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (11.3ms)
+Rendered tasks/new.html.erb within layouts/application (12.7ms)
+Completed   in 87ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x000001032103a0>:0x0000010320de20>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2173704660__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2173723320_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:50:36 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (12.5ms)
+Rendered tasks/new.html.erb within layouts/application (14.0ms)
+Completed   in 86ms
+
+ActionView::Template::Error (undefined method `tasks_path' for #<#<Class:0x000001011c0758>:0x000001011c4650>):
+    1: <%= form_for(@task) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2173743540__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2156804240_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.5ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:50:47 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (12.3ms)
+Rendered tasks/new.html.erb within layouts/application (13.8ms)
+Completed   in 57ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000100d3f710>:0x00000100d35940>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2154332700__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2154395100_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:52:21 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (10.6ms)
+Rendered tasks/new.html.erb within layouts/application (12.1ms)
+Completed   in 55ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000100ed5a70>:0x00000100ed27a8>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2155222020__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155243260_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (34.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (39.6ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:52:23 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.5ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.4ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (83.8ms)
+Completed   in 132ms
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"tasks"}):
+    35: </tr>
+    36: <% end %>
+    37: </table>
+    38: <%= link_to 'New Task', new_project_task_path %><br />
+    39: 
+    40: <%= link_to 'Edit', edit_project_path(@project) %> |
+    41: <%= link_to 'Back', projects_path %>
+  app/views/projects/show.html.erb:38:in `_app_views_projects_show_html_erb___1006255053381083348_2155613340_2014820658782396182'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.7ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:52:27 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (87.8ms)
+Completed 200 OK in 134ms (Views: 90.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:53:03 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (11.5ms)
+Rendered tasks/new.html.erb within layouts/application (13.1ms)
+Completed   in 88ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x000001030faf10>:0x000001030f35f8>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2173127000__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2173143540_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.7ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.8ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:53:29 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Completed   in 22ms
+
+NoMethodError (undefined method `task' for #<Project:0x00000100ce5d50>):
+  app/controllers/tasks_controller.rb:18:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.9ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:53:38 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (10.5ms)
+Rendered tasks/new.html.erb within layouts/application (12.0ms)
+Completed   in 55ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000100f314d8>:0x00000100f2dce8>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2155416420__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155438000_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.2ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:54:12 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+Rendered tasks/_form.html.erb (1.1ms)
+Rendered tasks/new.html.erb within layouts/application (2.5ms)
+Completed   in 7ms
+
+ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2173700600__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2173717680_2014820658782396182'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.9ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:55:01 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (43.6ms)
+Rendered tasks/new.html.erb within layouts/application (45.3ms)
+Completed   in 88ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000100c61d20>:0x00000100c5cd98>):
+    1: <%= form_for([@project, Task.new]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2153917640__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2153957160_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:55:08 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (11.8ms)
+Rendered tasks/new.html.erb within layouts/application (13.3ms)
+Completed   in 57ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000100e64d98>:0x00000100e5f3e8>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb___3132037419246858402_2154992960__3931320352106795202'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__865715501940162147_2155013520_2014820658782396182'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:55:28 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (23.8ms)
+Rendered tasks/new.html.erb within layouts/application (25.4ms)
+Completed   in 127ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000101facba0>:0x00000101fa8c30>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb__2679593424744357360_2164056680_167166749002699766'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__384211910964806771_2164079440_3185693549691005849'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:55:54 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+Rendered tasks/_form.html.erb (16.5ms)
+Rendered tasks/new.html.erb within layouts/application (18.0ms)
+Completed   in 32ms
+
+ActionView::Template::Error (undefined method `tasks_path' for #<#<Class:0x00000100f2c0a0>:0x00000100f2a228>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb__2679593424744357360_2155418860_167166749002699766'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__384211910964806771_2155430800_3185693549691005849'
+  app/controllers/tasks_controller.rb:21:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (37.2ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:56:13 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (11.5ms)
+Rendered tasks/new.html.erb within layouts/application (13.1ms)
+Completed   in 56ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000101cb4cb8>:0x00000101cb20d0>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb__2679593424744357360_2162484080_167166749002699766'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__384211910964806771_2162524260_3185693549691005849'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.0ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:56:28 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (22.8ms)
+Rendered tasks/new.html.erb within layouts/application (24.3ms)
+Completed   in 53ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000101e8d878>:0x00000101e84c00>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb__2679593424744357360_2163436840_167166749002699766'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__384211910964806771_2163472760_3185693549691005849'
+  app/controllers/tasks_controller.rb:21:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:56:41 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.4ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+Rendered tasks/_form.html.erb (13.3ms)
+Rendered tasks/new.html.erb within layouts/application (14.9ms)
+Completed   in 102ms
+
+ActionView::Template::Error (undefined method `project_tasks_path' for #<#<Class:0x00000101f095b8>:0x00000101f06ef8>):
+    1: <%= form_for([@project, @task]) do |f| %>
+    2:   <% if @task.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+  app/views/tasks/_form.html.erb:1:in `_app_views_tasks__form_html_erb__2679593424744357360_2163722640_167166749002699766'
+  app/views/tasks/new.html.erb:3:in `_app_views_tasks_new_html_erb__384211910964806771_2163746100_3185693549691005849'
+  app/controllers/tasks_controller.rb:20:in `new'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.8ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:57:40 +0300
+
+ActionController::RoutingError (uninitialized constant TaskController):
+  
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:57:50 +0300
+
+ActionController::RoutingError (uninitialized constant TaskController):
+  
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:57:51 +0300
+
+ActionController::RoutingError (uninitialized constant TaskController):
+  
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:57:59 +0300
+
+ActionController::RoutingError (No route matches "/projects/5/task/new"):
+  
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/projects/5/task/new" for 127.0.0.1 at 2011-04-20 18:58:22 +0300
+
+ActionController::RoutingError (No route matches "/projects/5/task/new"):
+  
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.4ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:58:26 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (1.1ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (1.1ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (93.1ms)
+Completed 200 OK in 171ms (Views: 95.6ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/projects/5/tasks/new" for 127.0.0.1 at 2011-04-20 18:58:28 +0300
+  Processing by TasksController#new as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+Rendered tasks/_form.html.erb (108.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered tasks/new.html.erb within layouts/application (142.7ms)
+Completed 200 OK in 185ms (Views: 146.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/projects/5/tasks" for 127.0.0.1 at 2011-04-20 18:59:21 +0300
+  Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "task"=>{"name"=>"Kossufestarit", "description"=>"Kesäiset kossufestarit puistossa, joissa Kristian maksaa mulle kossun.", "priority"=>"1", "status"=>"pending", "deadline(1i)"=>"2011", "deadline(2i)"=>"6", "deadline(3i)"=>"16", "deadline(4i)"=>"18", "deadline(5i)"=>"00", "comment"=>""}, "commit"=>"Create Task", "project_id"=>"5"}
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.7ms)[0m  [1mdescribe `tasks`[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO `tasks` (`project_id`, `description`, `priority`, `status`, `deadline`, `comment`, `created_at`, `updated_at`, `name`) VALUES (5, 'Kesäiset kossufestarit puistossa, joissa Kristian maksaa mulle kossun.', 1, 'pending', '2011-06-16 18:00:00', '', '2011-04-20 15:59:21', '2011-04-20 15:59:21', 'Kossufestarit')
+  [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/projects/5
+Completed 302 Found in 83ms
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 18:59:21 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (33.9ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (3.2ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (98.7ms)
+Completed 200 OK in 202ms (Views: 101.2ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-20 19:00:05 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (65.9ms)
+Completed 200 OK in 149ms (Views: 68.7ms | ActiveRecord: 2.5ms)

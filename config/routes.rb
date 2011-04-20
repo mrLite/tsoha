@@ -1,7 +1,5 @@
 Tsoha::Application.routes.draw do
   
-  resources :tasks
-
   controller :sessions do
     get '/login' => :new
     post '/login' => :create
@@ -13,7 +11,9 @@ Tsoha::Application.routes.draw do
   
   resources :users
 
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

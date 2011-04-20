@@ -17,10 +17,11 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @members = @project.members.all
+    @tasks = @project.tasks.all(:order => "priority")
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => [@project, @members] }
+      format.xml  { render :xml => [@project, @members, @tasks] }
     end
   end
 

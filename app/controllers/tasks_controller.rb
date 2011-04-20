@@ -1,19 +1,9 @@
 class TasksController < ApplicationController
-  # GET /tasks
-  # GET /tasks.xml
-  def index
-    @tasks = Task.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @tasks }
-    end
-  end
-
   # GET /tasks/1
   # GET /tasks/1.xml
   def show
-    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,8 +14,9 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
-    @task = Task.new
-
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.new
+  
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @task }
@@ -40,11 +31,12 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.xml
   def create
-    @task = Task.new(params[:task])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.new(params[:task])
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(@task, :notice => 'Task was successfully created.') }
+        format.html { redirect_to(@project, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }
