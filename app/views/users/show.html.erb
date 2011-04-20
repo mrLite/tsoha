@@ -10,7 +10,7 @@
 
 <h2>Your projects</h2>
 <% @projects.each do |project| %>
-	<p><%= link_to project.name, project_path %></p>
+	<p><%= link_to project.name, project %></p>
 <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
