@@ -16,7 +16,7 @@
 		</nav>
 		<div id="login">
 			<% if session[:user_id] %>
-				<p>You're logged in as <%= User.find_by_id(session[:user_id]).username %> <%= link_to 'Log out', logout_path %></p>
+				<p>You're logged in as <%= link_to find_user.username, find_user %> <%= link_to 'Log out', logout_path %></p>
 			<% else %>
 				<p><%= link_to 'Log in', login_path %> or <%= link_to 'create a new user account', new_user_path %></p>
 			<% end %>
