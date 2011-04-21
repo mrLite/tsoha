@@ -9009,3 +9009,717 @@ Started GET "/projects/1" for 127.0.0.1 at 2011-04-21 02:42:13 +0300
   [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
 Rendered projects/show.html.erb within layouts/application (59.8ms)
 Completed 200 OK in 142ms (Views: 63.7ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 02:44:17 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.3ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` ORDER BY role DESC[0m
+  [1m[35mMemberRole Load (0.3ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.2ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (105.2ms)
+Completed 200 OK in 153ms (Views: 107.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/projects/5/tasks/1" for 127.0.0.1 at 2011-04-21 02:44:22 +0300
+  Processing by TasksController#show as HTML
+  Parameters: {"project_id"=>"5", "id"=>"1"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mTask Load (0.8ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE `tasks`.`id` = 1 AND (`tasks`.project_id = 5) LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered tasks/show.html.erb within layouts/application (41.7ms)
+Completed 200 OK in 112ms (Views: 45.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/projects/5/tasks/3" for 127.0.0.1 at 2011-04-21 02:44:27 +0300
+  Processing by TasksController#show as HTML
+  Parameters: {"project_id"=>"5", "id"=>"3"}
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE `tasks`.`id` = 3 AND (`tasks`.project_id = 5) LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered tasks/show.html.erb within layouts/application (40.8ms)
+Completed 200 OK in 119ms (Views: 44.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/projects/5/members" for 127.0.0.1 at 2011-04-21 02:44:35 +0300
+  Processing by MembersController#index as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.5ms)[0m  SELECT `member_roles`.* FROM `member_roles` ORDER BY role DESC
+  [1m[36mMemberRole Load (0.4ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mMemberRole Load (0.2ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered members/index.html.erb within layouts/application (63.3ms)
+Completed 200 OK in 121ms (Views: 84.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/projects/5/add_member" for 127.0.0.1 at 2011-04-21 02:44:37 +0300
+  Processing by MembersController#add as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered members/add.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 88ms (Views: 57.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/projects/5/add_member" for 127.0.0.1 at 2011-04-21 02:44:40 +0300
+  Processing by MembersController#add as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered members/add.html.erb within layouts/application (22.3ms)
+Completed 200 OK in 56ms (Views: 25.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/projects/5/members/new?user_id=2" for 127.0.0.1 at 2011-04-21 02:44:41 +0300
+  Processing by MembersController#new as HTML
+  Parameters: {"user_id"=>"2", "project_id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.4ms)[0m  SELECT `member_roles`.* FROM `member_roles` ORDER BY role DESC
+Rendered members/_form.html.erb (23.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered members/new.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 143ms (Views: 83.5ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/projects/5/members" for 127.0.0.1 at 2011-04-21 02:44:43 +0300
+  Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "member"=>{"title"=>"", "member_role_id"=>"3", "user_id"=>"2"}, "commit"=>"Create Member", "project_id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `members`[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO `members` (`project_id`, `user_id`, `member_role_id`, `title`, `created_at`, `updated_at`) VALUES (5, 2, 3, '', '2011-04-20 23:44:43', '2011-04-20 23:44:43')
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/projects/5
+Completed 302 Found in 47ms
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 02:44:43 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.8ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.3ms)[0m  SELECT `member_roles`.* FROM `member_roles` ORDER BY role DESC
+  [1m[36mMemberRole Load (0.2ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mMemberRole Load (0.2ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (105.7ms)
+Completed 200 OK in 152ms (Views: 107.7ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-21 02:45:34 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'Public'
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (74.1ms)
+Completed 200 OK in 94ms (Views: 77.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:34:06 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (111.9ms)
+Completed   in 333ms
+
+ActionView::Template::Error (/Users/AQ/Projektit/tsoha/app/models/member_role.rb:4: syntax error, unexpected ',', expecting tASSOC
+...conditions => {"role NOT IN ?", "creator"}, :order => "role ...
+...                               ^
+/Users/AQ/Projektit/tsoha/app/models/member_role.rb:4: syntax error, unexpected '}', expecting keyword_end
+...=> {"role NOT IN ?", "creator"}, :order => "role DESC").coll...
+...                               ^
+/Users/AQ/Projektit/tsoha/app/models/member_role.rb:4: syntax error, unexpected ')', expecting keyword_end
+...eator"}, :order => "role DESC").collect { |role| [role.role,...
+...                               ^):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___2480358299829684992_2169973900__3634866566274550826'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___2480358299829684992_2169973900__3634866566274550826'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (43.4ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:34:33 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (1.5ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.5ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (21.4ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE (role NOT IN 'creator') ORDER BY role DESC[0m
+Mysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''creator') ORDER BY role DESC' at line 1: SELECT `member_roles`.* FROM `member_roles` WHERE (role NOT IN 'creator') ORDER BY role DESC
+Rendered projects/show.html.erb within layouts/application (114.3ms)
+Completed   in 167ms
+
+ActionView::Template::Error (Mysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''creator') ORDER BY role DESC' at line 1: SELECT `member_roles`.* FROM `member_roles` WHERE (role NOT IN 'creator') ORDER BY role DESC):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___2480358299829684992_2168971820__3634866566274550826'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___2480358299829684992_2168971820__3634866566274550826'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.1ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:39:27 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+Rendered projects/show.html.erb within layouts/application (79.0ms)
+Completed   in 126ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x00000102c8b880>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___2480358299829684992_2154951940__3634866566274550826'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___2480358299829684992_2154951940__3634866566274550826'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.8ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:39:41 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (1.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+Rendered projects/show.html.erb within layouts/application (79.3ms)
+Completed   in 128ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x00000102bc8d80>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___2480358299829684992_2153413840__3634866566274550826'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___2480358299829684992_2153413840__3634866566274550826'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.8ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:40:01 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+Rendered projects/show.html.erb within layouts/application (98.4ms)
+Completed   in 234ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x00000100f2d428>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3210066068032450792_2172777620__2783469155224388650'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3210066068032450792_2172777620__2783469155224388650'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.1ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.8ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:41:08 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (1.4ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.5ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (71.1ms)
+Completed   in 119ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for Class:Class):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3210066068032450792_2155524260__2783469155224388650'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3210066068032450792_2155524260__2783469155224388650'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:41:12 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+Rendered projects/show.html.erb within layouts/application (78.1ms)
+Completed   in 125ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x000001030e22f8>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3210066068032450792_2153629380__2783469155224388650'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3210066068032450792_2153629380__2783469155224388650'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.9ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.2ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:41:21 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+Rendered projects/show.html.erb within layouts/application (51.1ms)
+Completed   in 131ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x000001013f7008>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3210066068032450792_2173648200__2783469155224388650'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3210066068032450792_2173648200__2783469155224388650'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.1ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:41:37 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+Rendered projects/show.html.erb within layouts/application (44.5ms)
+Completed   in 121ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x00000100f73950>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3210066068032450792_2172913800__2783469155224388650'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3210066068032450792_2172913800__2783469155224388650'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.6ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:43:26 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.4ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+Rendered projects/show.html.erb within layouts/application (43.2ms)
+Completed   in 91ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x00000100e75440>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3210066068032450792_2157240280__2783469155224388650'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3210066068032450792_2157240280__2783469155224388650'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (36.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (42.6ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:44:33 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+Rendered projects/show.html.erb within layouts/application (74.0ms)
+Completed   in 122ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x000001031df278>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3210066068032450792_2155208820__2783469155224388650'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3210066068032450792_2155208820__2783469155224388650'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.5ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.1ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:44:45 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+Rendered projects/show.html.erb within layouts/application (61.2ms)
+Completed   in 164ms
+
+ActionView::Template::Error (undefined method `find_or_create_roles' for #<Class:0x00000100c90738>):
+    11: <% @members.each do |member| %>
+    12: <tr>
+    13: 	<td><%= member.user.username %></td>
+    14: 	<td><%= member.member_role.role %></td>
+    15: 	<td><%= member.user.email %></td>
+    16: 	<td><%= member.title %></td>
+    17: </tr>
+  app/models/member_role.rb:4:in `<class:MemberRole>'
+  app/models/member_role.rb:1:in `<top (required)>'
+  app/views/projects/show.html.erb:14:in `block in _app_views_projects_show_html_erb___3332562657088856625_2158884580__1001615922850357223'
+  app/views/projects/show.html.erb:11:in `each'
+  app/views/projects/show.html.erb:11:in `_app_views_projects_show_html_erb___3332562657088856625_2158884580__1001615922850357223'
+  app/controllers/projects_controller.rb:22:in `show'
+
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.0ms)
+Rendered /Users/AQ/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:45:19 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.2ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (168.5ms)
+Completed 200 OK in 215ms (Views: 171.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/projects/5/members" for 127.0.0.1 at 2011-04-21 16:45:27 +0300
+  Processing by MembersController#index as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.2ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered members/index.html.erb within layouts/application (92.1ms)
+Completed 200 OK in 209ms (Views: 173.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/projects/5/add_member" for 127.0.0.1 at 2011-04-21 16:45:29 +0300
+  Processing by MembersController#add as HTML
+  Parameters: {"project_id"=>"5"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered members/add.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 113ms (Views: 46.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projects/5/members/new?user_id=3" for 127.0.0.1 at 2011-04-21 16:45:32 +0300
+  Processing by MembersController#new as HTML
+  Parameters: {"user_id"=>"3", "project_id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mMemberRole Load (0.4ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1
+  [1m[36mMemberRole Load (0.3ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.9ms)[0m  [1mdescribe `member_roles`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `member_roles` (`role`, `created_at`, `updated_at`) VALUES ('user', '2011-04-21 13:45:33', '2011-04-21 13:45:33')
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mMemberRole Load (0.3ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1
+Rendered members/_form.html.erb (36.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered members/new.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 176ms (Views: 85.1ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-21 16:45:40 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'Public'[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/index.html.erb within layouts/application (71.7ms)
+Completed 200 OK in 92ms (Views: 74.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-04-21 16:46:03 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'Public'
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (72.4ms)
+Completed 200 OK in 91ms (Views: 75.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/projects/5" for 127.0.0.1 at 2011-04-21 16:46:04 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 5 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 5)
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 5) ORDER BY priority[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (3.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mMemberRole Load (0.3ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered projects/show.html.erb within layouts/application (85.0ms)
+Completed 200 OK in 161ms (Views: 83.1ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-04-21 16:46:07 +0300
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.* FROM `projects` INNER JOIN `members` ON `projects`.id = `members`.project_id WHERE ((`members`.user_id = 1))[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 85ms (Views: 34.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-21 16:46:09 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 1)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 1) ORDER BY priority
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (109.1ms)
+Completed 200 OK in 162ms (Views: 116.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/projects/1/members" for 127.0.0.1 at 2011-04-21 16:46:11 +0300
+  Processing by MembersController#index as HTML
+  Parameters: {"project_id"=>"1"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 1)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.5ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered members/index.html.erb within layouts/application (87.7ms)
+Completed 200 OK in 124ms (Views: 90.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/projects/1/add_member" for 127.0.0.1 at 2011-04-21 16:46:12 +0300
+  Processing by MembersController#add as HTML
+  Parameters: {"project_id"=>"1"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered members/add.html.erb within layouts/application (53.1ms)
+Completed 200 OK in 87ms (Views: 56.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/projects/1/members/new?user_id=3" for 127.0.0.1 at 2011-04-21 16:46:14 +0300
+  Processing by MembersController#new as HTML
+  Parameters: {"user_id"=>"3", "project_id"=>"1"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mMemberRole Load (0.6ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1
+  [1m[36mMemberRole Load (0.3ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1
+Rendered members/_form.html.erb (26.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered members/new.html.erb within layouts/application (40.4ms)
+Completed 200 OK in 131ms (Views: 43.2ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/projects/1/members" for 127.0.0.1 at 2011-04-21 16:46:21 +0300
+  Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fO/SEDjHXnxo6MvSb/KxfnyUeP56SHWMZnB6hywXu34=", "member"=>{"title"=>"Päällikkö", "member_role_id"=>"2", "user_id"=>"3"}, "commit"=>"Create Member", "project_id"=>"1"}
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `members`[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO `members` (`project_id`, `user_id`, `member_role_id`, `title`, `created_at`, `updated_at`) VALUES (1, 3, 2, 'Päällikkö', '2011-04-21 13:46:21', '2011-04-21 13:46:21')
+  [1m[36mSQL (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/projects/1
+Completed 302 Found in 80ms
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-04-21 16:46:21 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (1.9ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 1)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 1) ORDER BY priority
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.2ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (89.8ms)
+Completed 200 OK in 163ms (Views: 92.3ms | ActiveRecord: 4.9ms)
