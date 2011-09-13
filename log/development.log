@@ -13439,3 +13439,101 @@ Started GET "/users/3" for 127.0.0.1 at 2011-09-13 22:45:43 +0300
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
 Rendered users/show.html.erb within layouts/application (14.7ms)
 Completed 200 OK in 111ms (Views: 19.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2011-09-13 22:55:07 +0300
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (1.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT `projects`.*, `projects`.`id` FROM `projects` INNER JOIN `members` ON `projects`.id = `members`.project_id WHERE `projects`.`id` = 1 AND ((`members`.user_id = 3)) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT `members`.* FROM `members` WHERE (`members`.project_id = 1)[0m
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (`tasks`.project_id = 1) ORDER BY priority
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.6ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.3ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/show.html.erb within layouts/application (118.9ms)
+Completed 200 OK in 349ms (Views: 122.5ms | ActiveRecord: 68.3ms)
+
+
+Started GET "/projects/1/members" for 127.0.0.1 at 2011-09-13 22:55:10 +0300
+  Processing by MembersController#index as HTML
+  Parameters: {"project_id"=>"1"}
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE (`members`.project_id = 1)
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.2ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mMemberRole Load (0.2ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered members/index.html.erb within layouts/application (102.3ms)
+Completed 200 OK in 142ms (Views: 103.5ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/projects/1/add_member" for 127.0.0.1 at 2011-09-13 22:55:12 +0300
+  Processing by MembersController#add as HTML
+  Parameters: {"project_id"=>"1"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT `projects`.*, `projects`.`id` FROM `projects` INNER JOIN `members` ON `projects`.id = `members`.project_id WHERE `projects`.`id` = 1 AND ((`members`.user_id = 3)) LIMIT 1[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.* FROM `members` WHERE `members`.`user_id` = 3 AND (`members`.project_id = 1) LIMIT 1
+  [1m[36mMemberRole Load (0.8ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered members/add.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 146ms (Views: 10.3ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/projects/1/members/new?user_id=1" for 127.0.0.1 at 2011-09-13 22:55:14 +0300
+  Processing by MembersController#new as HTML
+  Parameters: {"user_id"=>"1", "project_id"=>"1"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mProject Load (0.4ms)[0m  SELECT `projects`.*, `projects`.`id` FROM `projects` INNER JOIN `members` ON `projects`.id = `members`.project_id WHERE `projects`.`id` = 1 AND ((`members`.user_id = 3)) LIMIT 1
+  [1m[36mMember Load (0.6ms)[0m  [1mSELECT `members`.* FROM `members` WHERE `members`.`user_id` = 3 AND (`members`.project_id = 1) LIMIT 1[0m
+  [1m[35mMemberRole Load (0.7ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMemberRole Load (0.4ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1
+  [1m[36mMemberRole Load (0.2ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1
+Rendered members/_form.html.erb (67.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered members/new.html.erb within layouts/application (92.8ms)
+Completed 200 OK in 220ms (Views: 96.2ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/projects/1/members" for 127.0.0.1 at 2011-09-13 22:55:20 +0300
+  Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YwIiq1Ma0E+Iik9Eia0RiVS7NY/tq0imBDTCjfR47Mg=", "member"=>{"title"=>"Blaa", "member_role_id"=>"2", "user_id"=>"1"}, "commit"=>"Create Member", "project_id"=>"1"}
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT `projects`.*, `projects`.`id` FROM `projects` INNER JOIN `members` ON `projects`.id = `members`.project_id WHERE `projects`.`id` = 1 AND ((`members`.user_id = 3)) LIMIT 1[0m
+  [1m[35mMember Load (1.4ms)[0m  SELECT `members`.* FROM `members` WHERE `members`.`user_id` = 3 AND (`members`.project_id = 1) LIMIT 1
+  [1m[36mMemberRole Load (1.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`id` = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mMember Load (0.3ms)[0m  SELECT `members`.`id` FROM `members` WHERE `members`.`user_id` = 1 AND (`members`.`project_id` = 1) LIMIT 1
+  [1m[36mSQL (35.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mMemberRole Load (0.3ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'administrator' LIMIT 1[0m
+  [1m[35mMemberRole Load (0.2ms)[0m  SELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `member_roles`.* FROM `member_roles` WHERE `member_roles`.`role` = 'user' LIMIT 1[0m
+Rendered members/_form.html.erb (7.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Rendered members/new.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 181ms (Views: 16.7ms | ActiveRecord: 41.1ms)
