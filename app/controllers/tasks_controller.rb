@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_filter :authorize, :except => :show
+  before_filter :can_add?, :except => :show
   
   # GET /tasks/1
   # GET /tasks/1.xml

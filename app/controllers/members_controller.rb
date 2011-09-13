@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  before_filter :can_add?, :except => [:index]
   def index
     @project = Project.find(params[:project_id])
     @members = @project.members.all

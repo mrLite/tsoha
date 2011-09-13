@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_filter :authorize, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :can_access?, :only => [:show, :edit, :update, :destroy]
+  before_filter :can_modify?, :only => [:edit, :update, :destroy]
   
   # GET /projects
   # GET /projects.xml
@@ -85,5 +87,35 @@ class ProjectsController < ApplicationController
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def can_access?
+    project = Project.find(params[:id])
+    
+    if logged_in?
+      user = User.find(session[:user_id])
+      unless user.projects.include?(project) or project.visibility == "Public"
+        redirect_to root_url, :notice => "You're not authorized to access this project!"
+      end
+    elsif project.visibility != "Public"
+      redirect_to root_url, :notice => "You're not authorized to access this project!"
+    end
+  end
+  
+  def can_modify?
+    project = Project.find(params[:id])
+    
+    if logged_in?
+      user = User.find(session[:user_id])
+      if user.projects.include?(project)
+        member = project.members.find(user)
+        if (member.member_role.role == "creator" or member.member_role.role == "administrator")
+          return true
+        end
+      end
+    end
+    redirect_to project, :notice => "You're not authorized to modify this project!"
   end
 end

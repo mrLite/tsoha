@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authorize, :only => [:edit, :update, :destroy]
+  before_filter :authorize, :only => [:index, :show, :edit, :update, :destroy]
+  before_filter :is_admin?, :only => [:index]
+  before_filter :own_account?, :only => [:show, :edit, :update, :destroy]
   
   # GET /users
   # GET /users.xml
@@ -84,5 +86,18 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def own_account?
+    if logged_in?
+      user = User.find(session[:user_id])
+      account = User.find(params[:id])
+      if user.id == account.id or user.user_role.role == "administrator"
+        return true
+      end
+    end
+    redirect_to root_url, :notice => "You're not allowed to access this user account"
   end
 end

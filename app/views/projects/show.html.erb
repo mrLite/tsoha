@@ -20,6 +20,7 @@
 <%= link_to 'Show all members', project_members_path(@project) %>
 
 <h2>Tasks</h2>
+<% unless @tasks.empty? %>
 <table>
 	<th>Task</th>
 	<th>Description</th>
@@ -37,8 +38,10 @@
 	<td><%= link_to 'Show task', project_task_path(@project, task) %></td>
 </tr>
 <% end %>
+<% end %>
 </table>
 <%= link_to 'New Task', new_project_task_path(@project, @task) %><br />
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Destroy', project_path(@project), :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', projects_path %>
