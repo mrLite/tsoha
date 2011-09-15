@@ -13537,3 +13537,12 @@ Rendered members/_form.html.erb (7.7ms)
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
 Rendered members/new.html.erb within layouts/application (13.3ms)
 Completed 200 OK in 181ms (Views: 16.7ms | ActiveRecord: 41.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2011-09-13 22:56:56 +0300
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT `projects`.* FROM `projects` WHERE `projects`.`visibility` = 'Public'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Rendered projects/index.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 60ms (Views: 44.5ms | ActiveRecord: 0.9ms)
