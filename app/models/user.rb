@@ -3,6 +3,7 @@ require 'digest/sha2'
 class User < ActiveRecord::Base
   has_many :members, :dependent => :delete_all
   has_many :projects, :through => :members
+  has_many :task_locks, :dependent => :delete_all
   
   belongs_to :user_role
   

@@ -1,6 +1,7 @@
 <h1><%= @project.name %></h1>
 
 <p><%= @project.description %></p>
+<p>Deadline: <%= @project.deadline.strftime("%d.%m.%Y %H:%M") %></p>
 
 <h2>Project members</h2>
 <table>

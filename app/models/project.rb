@@ -5,5 +5,5 @@ class Project < ActiveRecord::Base
   has_many :project_members, :through => :members, :source => :user
   has_many :tasks, :dependent => :delete_all
   
-  validates :name, :presence => true
+  validates_presence_of :name, :deadline
 end

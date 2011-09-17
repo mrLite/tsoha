@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @members = @project.members.all
-    @tasks = @project.tasks.all(:order => "priority")
+    @tasks = @project.tasks.all(:order => "status, priority, deadline")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -110,7 +110,7 @@ class ProjectsController < ApplicationController
     if logged_in?
       user = User.find(session[:user_id])
       if user.projects.include?(project)
-        member = project.members.find(user)
+        member = project.members.find_by_user_id(user)
         if (member.member_role.role == "creator" or member.member_role.role == "administrator")
           return true
         end

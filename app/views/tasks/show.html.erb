@@ -28,6 +28,18 @@
   <%= @task.comment %>
 </p>
 
+<% unless @task.task_locks.empty? %>
+Task allocated to:
+<% @task.task_locks.each do |lock| %>
+<p><%= lock.user.username %></p>
+<% end %>
+<% end %>
+
+<% form_for [@project, @task, @task.task_locks.new], :task_id => @task.id do |f| %>
+	<%= f.select(:user_id, @project.project_members.collect {|u| [u.username, u.id]}) %>
+	<%= f.submit "Allocate task" %>
+<% end %>
 
 <%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
+<%= link_to 'Destroy', project_task_path(@project, @task), :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Back', project_path(@project) %>

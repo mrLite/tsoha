@@ -6,12 +6,11 @@
     <th>Email</th>
     <th></th>
   </tr>
-
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= user.email %></td>
+<tr>
+  <td><%= user.username %></td>
+  <td><%= user.email %></td>
 	<td><%= link_to 'add', {:controller => "members", :action => "new", :project_id => @project.id, :user_id => user.id} %></td>
-  </tr>
+</tr>
 <% end %>
 </table>

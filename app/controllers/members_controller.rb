@@ -7,7 +7,7 @@ class MembersController < ApplicationController
   
   def add
     @project = Project.find(params[:project_id])
-    @users = User.all
+    @users = User.all.collect {|user| user unless user.projects.include?(@project) }.compact!
   end
   
   def new

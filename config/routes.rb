@@ -13,7 +13,9 @@ Tsoha::Application.routes.draw do
 
   resources :projects do
     match 'add_member' => 'members#add', :as => :add_member
-    resources :tasks
+    resources :tasks do
+      resources :task_locks, :only => [:create]
+    end
     resources :members
   end
 
