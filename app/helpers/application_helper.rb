@@ -8,6 +8,7 @@ module ApplicationHelper
       member = project.members.find_by_user_id(session[:user_id])
       if member and (member.member_role.role == "creator" or member.member_role.role = "administrator")
         yield if block_given?
+        return
       end
     end
   end
@@ -17,6 +18,7 @@ module ApplicationHelper
       user = User.find(session[:user_id])
       if user.user_role.role == "administrator"
         yield if block_given?
+        return
       end
     end
   end
