@@ -13,4 +13,5 @@
 </tr>
 <% end %>
 </table>
-<%= link_to 'Add a new member', project_add_member_path %>
+<% if_project_admin @project do %><%= link_to 'Add a new member', project_add_member_path %> |<% end %>
+<%= link_to 'Back', project_path(@project) %>
