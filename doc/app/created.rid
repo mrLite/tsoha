@@ -1,0 +1,21 @@
+Mon, 19 Sep 2011 02:46:44 +0300
+doc/README_FOR_APP	Thu, 07 Apr 2011 00:18:03 +0300
+app/controllers/application_controller.rb	Sun, 18 Sep 2011 20:34:10 +0300
+app/controllers/members_controller.rb	Sun, 18 Sep 2011 23:48:54 +0300
+app/controllers/projects_controller.rb	Sun, 18 Sep 2011 23:42:05 +0300
+app/controllers/sessions_controller.rb	Thu, 14 Apr 2011 18:34:16 +0300
+app/controllers/task_locks_controller.rb	Sat, 17 Sep 2011 22:25:43 +0300
+app/controllers/tasks_controller.rb	Sun, 18 Sep 2011 23:42:48 +0300
+app/controllers/users_controller.rb	Sun, 18 Sep 2011 23:43:22 +0300
+app/helpers/application_helper.rb	Sun, 18 Sep 2011 20:33:16 +0300
+app/helpers/projects_helper.rb	Thu, 07 Apr 2011 00:18:03 +0300
+app/helpers/sessions_helper.rb	Thu, 14 Apr 2011 18:13:34 +0300
+app/helpers/tasks_helper.rb	Wed, 20 Apr 2011 18:12:59 +0300
+app/helpers/users_helper.rb	Thu, 07 Apr 2011 23:01:58 +0300
+app/models/member.rb	Tue, 13 Sep 2011 22:54:11 +0300
+app/models/member_role.rb	Thu, 21 Apr 2011 16:45:44 +0300
+app/models/project.rb	Sun, 18 Sep 2011 21:35:07 +0300
+app/models/task.rb	Sat, 17 Sep 2011 22:24:18 +0300
+app/models/task_lock.rb	Sat, 17 Sep 2011 22:26:21 +0300
+app/models/user.rb	Mon, 19 Sep 2011 01:46:46 +0300
+app/models/user_role.rb	Fri, 15 Apr 2011 01:53:37 +0300
