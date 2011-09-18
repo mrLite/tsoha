@@ -35,8 +35,8 @@ Task allocated to:
 <% end %>
 <% end %>
 
-<% if_project_admin @project do %>
-<% form_for [@project, @task, @task.task_locks.new], :task_id => @task.id do |f| %>
+<%= if_project_admin @project do %>
+<%= form_for [@project, @task, @task.task_locks.new], :task_id => @task.id do |f| %>
 	<%= f.select(:user_id, @project.project_members.collect {|u| [u.username, u.id]}) %>
 	<%= f.submit "Allocate task" %>
 <% end %>

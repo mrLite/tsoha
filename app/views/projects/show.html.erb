@@ -41,7 +41,7 @@
 <% end %>
 <% end %>
 </table>
-<% if_project_admin @project do %>
+<%= if_project_admin @project do %>
 <%= link_to 'New Task', new_project_task_path(@project, @task) %><br />
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

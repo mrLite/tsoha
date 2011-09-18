@@ -8,7 +8,7 @@
 <table>
   <tr>
     <td><%= link_to 'Show', project %></td>
-	<% if_project_admin project do %>
+	<%= if_project_admin project do %>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
 	<% end %>

@@ -12,7 +12,7 @@
 	<header id="header">
 		<nav>
 			<%= link_to 'Projects', projects_path %>
-			<% if_app_admin do %><%= link_to 'Users', users_path %><% end %>
+			<%= if_app_admin do %><%= link_to 'Users', users_path %><% end %>
 		</nav>
 		<div id="login">
 			<% if session[:user_id] %>
