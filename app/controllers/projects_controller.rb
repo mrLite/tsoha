@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :authorize, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :can_access?, :only => [:show, :edit, :update, :destroy]
   before_filter :can_modify?, :only => [:edit, :update, :destroy]
+  before_filter :is_creator?, :only => [:destroy]
   
   # GET /projects
   # GET /projects.xml
@@ -91,6 +92,16 @@ class ProjectsController < ApplicationController
   
   private
   
+  def is_creator?
+    project = Project.find(params[:id])
+    member = project.members.find_by_user_id(session[:user_id])
+    if member.member_role.role == "creator"
+      return true
+    end
+    redirect_to project, :notice => "You're not allowed to destroy this project!"
+  end
+  
+  # Redirects to root unless the project is public, or the user logged in is a member of the project
   def can_access?
     project = Project.find(params[:id])
     
@@ -104,6 +115,7 @@ class ProjectsController < ApplicationController
     end
   end
   
+  # Redirects to project unless the logged in user is either the creator or an administrator of the project, in which case returns true
   def can_modify?
     project = Project.find(params[:id])
     

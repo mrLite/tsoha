@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # Checks if the user logged in is authorized to modify the project
   def can_add?
     project = Project.find(params[:project_id])
 

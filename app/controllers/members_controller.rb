@@ -5,9 +5,10 @@ class MembersController < ApplicationController
     @members = @project.members.all
   end
   
+  # Collects all registered users who aren't members of the project
   def add
     @project = Project.find(params[:project_id])
-    @users = User.all.collect {|user| user unless user.projects.include?(@project) }.compact!
+    @users = User.all.collect {|user| user unless user.projects.include?(@project)}.compact!
   end
   
   def new
@@ -27,10 +28,8 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.save
         format.html { redirect_to(@project, :notice => 'Member was successfully added.') }
-        format.xml  { render :xml => @member, :status => :created, :location => @member }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @member.errors, :status => :unprocessable_entity }
       end
     end
   end

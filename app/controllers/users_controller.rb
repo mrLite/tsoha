@@ -90,6 +90,8 @@ class UsersController < ApplicationController
   
   private
   
+  # Returns true if the user account in params is the account of the logged in user.
+  # Otherwise redirects to root url
   def own_account?
     if logged_in?
       user = User.find(session[:user_id])
